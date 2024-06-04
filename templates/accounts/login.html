@@ -1,0 +1,43 @@
+{% extends 'onlineregistration/base.html' %}
+{% load static %}
+{% block body_block %}
+<link rel='stylesheet'href={% static 'css/style.css'%}>
+
+<div class='body'>
+
+<div id='topmenu'>
+   
+        
+    <h3>
+        Do not have an account?
+        <a class='link' href='{% url 'accounts_app:register'%}'>Create Account Here</a><br>
+    </h3>
+</div>
+<div class='main_container'>
+ 
+<div class='center' id='body' >
+
+    <form  action={% url 'accounts_app:user_login'%} method='POST'enctype='multipart/form-data' method='post'>
+        {% csrf_token %}
+        <h1 class='title'>Sign In
+        
+        {%if fail%}
+           <p class='link'>please enter correct username or password</p>
+           {%endif%}
+        
+        <p>Username:</p>
+        <p><input class='input' type='username' name='username' placeholder='Case Sensitive'></p>
+        <p>Password:</p>
+        <p><input class='input' type='password' name='password' value='' placeholder='Case Sensitive'></p><br><br>
+        <p><input class='registerbtn' type='submit' class='button2'name='' value='Login'></p>
+        {%if fail%}
+           <p>forgot password?</p>
+           {%endif%}
+        
+        </h1>
+    </form>
+</div>
+
+</div>
+</div>
+{% endblock %}

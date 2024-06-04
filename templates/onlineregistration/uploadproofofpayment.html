@@ -1,0 +1,37 @@
+{% extends 'onlineregistration/base.html' %}
+{% load static %}   <link rel='stylesheet'href={% static 'css/onlineregistration.css'%}>
+{% block body_block %}
+<div class='pagetitle'>
+    <h1>Online Registration</h1></div>
+<div class='body'>
+    <h1><p>Upload Proof Of Payment</p></h1><hr>
+    {%if message%}
+    <h2 class='link'><p>{{message}}</p></h2>
+    {%endif%}
+    {%if myregistrations%}
+    {%for myregistration in myregistrations%}
+    {%if myregistration.status%}
+    {%else%}
+     <form  action={% url 'uploadproofofpayment'%} method='POST'enctype='multipart/form-data' method='post'>
+              {% csrf_token %}
+    <h2><p>Student Name: {{myregistration.studentname}}</p><p><input type='hidden'name='registration' value='{{myregistration.registrationid}}'><input type='file'name='pop'></p></h2>
+    <p><input type='submit'class='registerbtn'value='Upload Pop'></p>
+        </form><hr>
+         
+    {%endif%}
+    {%endfor%}
+    {%else%}
+    <h2><p>You have no approved registrations.</p></h2>
+    {%endif%}<hr>
+    <h2><p>Upload History</p></h2>
+    {%if pops%}
+
+    {%for pop in pops%}
+    <h3><p>Uploaded Pop: ( Registration: {{pop.registration.studentname}}, Popid: {{pop.popid}}.)</p></h3>
+    {%endfor%}
+    {%else%}
+    <h3><p>N/a</p></h3>
+    {%endif%}
+    <p><a class='link' href='{% url 'makepayment'%}'><input type=submit class='viewbtn'name='done'value='done'></a></p>
+<hr></div>
+{%endblock%}

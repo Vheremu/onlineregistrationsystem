@@ -1,0 +1,66 @@
+{% extends 'onlineregistration/base.html' %}
+{% load static %}   <link rel='stylesheet'href={% static 'css/onlineregistration.css'%}>
+{% block body_block %}
+<div class='pagetitle'>
+    <h1>Online Registration</h1></div>
+<div class='body'>
+    {%if myregistrations%}
+     <div ><h2><p>My Registrations</p></h2></div>
+    {%for myregistration in myregistrations%}
+    {%if myregistration.status%}
+    <div class = message>
+        <h3><p>Student Name: {{myregistration.studentname}}</p></h3></div>
+    <p> registration for : {{myregistration.studentname}} ,is still pending for approval. This might take 2 to 3 working days.</p>
+    {%else%}
+    <div class = message>
+        <h3><p>Student Name: {{myregistration.studentname}}</p></h3></div>
+        <form  action={% url 'makepayment'%} method='POST'enctype='multipart/form-data' method='post'>
+              {% csrf_token %}
+           <p> <input type='submit'class='registerbtn'name='makepayment'value='Make Payment'>  </p>
+        </form>  
+        {%endif%} 
+        <form  action={% url 'viewregistration'%} method='POST'enctype='multipart/form-data' method='post'>
+              {% csrf_token %}
+           <p> <input type=hidden name=id value={{myregistration.registrationid}} ></p>
+           <p><input type='submit'class='viewbtn'name='viewregistration'value='View Registration'></p> 
+        </form>
+    <hr>
+    {%endfor%}
+    <hr>
+    {%endif%}
+    <h1><p>Easy Registration!</p></h1>
+      <form  action={% url 'easyregistration'%} method='POST'enctype='multipart/form-data' method='post'>
+        {% csrf_token %} 
+          {%if message%}
+          <div class = message><h1><p>++{{message}}++</p></h1></div>
+          {%endif%}
+    <h2><p>Please fill in the form.</p></h2>
+     <h1><p>Step 1: Select Course.</p></h1>
+   . <h3><p><input class='radio' type='radio'name='course'value='zimsec'>Zimsec</p></h3>
+    <h3><p><input class='radio' type='radio'name='course'value='cambridge'>Cambridge</p></h3>
+    <h1><p>Step 2: Input Parent/Guardian Details.</p></h1>
+    <h2><p>Enter Parent Name:</p></h2>
+     <h3><p><input class='input'type='text'name='parentname'value=''placeholder='Name Here'></p></h3>
+    <h2><p>Enter Parent Surname:</p></h2>
+     <h3><p><input class='input' type='text'name='parentsurname'value=''placeholder='Surname Here'></p></h3>
+    <h2><p>Enter Parent Email:</p></h2>
+     <h3><p><input class='input' type='email'name='parentemail'value=''placeholder='vheremu007@gmail.com'></p></h3>
+    <h2><p>Enter Parent Phone Number:</p></h2>
+     <h3><p><input class='input' type='text'name='parentphonenumber'value=''placeholder='+263783453569'></p></h3>
+    <h1><p>Step 3: Input Student Details.</p></h1>
+    <h2><p>Enter Student Name:</p></h2>
+     <h3><p><input class='input' type='text'name='studentname'value=''placeholder='Name Here'></p></h3>
+     <h2><p>Enter Student Surname:</p></h2>
+     <h3><p><input class='input' type='text'name='studentsurname'value=''placeholder='Surname Here'></p></h3>
+     <h2><p>Enter Student's Level:</p></h2>
+    <h3><p><input class='radio' type='radio'name='form'value='1'>Form 1</p></h3>
+        <h3><p><input class='radio' type='radio'name='form'value='2'>Form 2</p></h3>
+        <h3><p><input class='radio' type='radio'name='form'value='3'>Form 3</p></h3>
+    <h2><p>Enter Student Sex:</p></h2>
+    . <h3><p><input class='radio' type='radio'name='studentsex'value='male'>Male</p></h3>
+    <h3><p><input class='radio' type='radio'name='studentsex'value='female'>Female</p></h3>
+    <input type='hidden'name='easyregistration'value='1'>
+        <h3><p><input type='submit'class='registerbtn'name='student'value='Submit'></p></h3>
+    </form>
+</div>
+{%endblock%}

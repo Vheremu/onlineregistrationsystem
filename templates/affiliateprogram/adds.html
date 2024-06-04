@@ -1,0 +1,19 @@
+{% extends 'affiliateprogram/base.html' %}
+{% load static %}   <link rel='stylesheet'href={% static 'css/onlineregistration.css'%}>
+{% block body_block %}
+<div class='pagetitle'>
+    <h1>Affiliate Program</h1></div>
+<div class='body'>
+    <h1><p>Adds</p></h1><hr>
+    {%for add in adds%}<div class='imagemain'>
+   <h2> <div class='imagediv'><p class='imagediv'>Aaron Boarding School Adds<br><img class='img1' src='{{add.addimage.url}}'></p>
+       <form  action={% url 'ap_app:confirmgetadd'%} method='POST'enctype='multipart/form-data' method='post'>
+              {% csrf_token %}
+   <input type='hidden'name='addid' value='{{add.addid}}'>
+    <input type='submit'class='registerbtn'value='Get Add'>
+        </form>
+       
+       <hr></div></h2></div>
+    {%endfor%}
+   </div>
+{%endblock%}

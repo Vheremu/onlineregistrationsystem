@@ -1,0 +1,15 @@
+{% extends 'onlineregistration/base.html' %}
+{% load static %}   <link rel='stylesheet'href={% static 'css/onlineregistration.css'%}>
+{% block body_block %}
+<div class='pagetitle'>
+    <h1>Online Registration</h1></div>
+<div class='body'>
+    <h1><p>Admissions</p></h1><hr>
+    {%if admissions%}
+    <h3><p>helo world</p></h3>
+    {%else%}
+    <h3><p>No Admissions Available.</p></h3>
+    {%endif%}
+    <p> <a class='link' href='{% url 'onlineregistration'%}'><input type=submit class='viewbtn'name='done'value='done'></a></p>
+</div>
+{%endblock%}

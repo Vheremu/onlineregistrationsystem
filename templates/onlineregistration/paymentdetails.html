@@ -1,0 +1,15 @@
+{% extends 'onlineregistration/base.html' %}
+{% load static %}   <link rel='stylesheet'href={% static 'css/onlineregistration.css'%}>
+{% block body_block %}
+<div class='pagetitle'>
+    <h1>Online Registration</h1></div>
+<div class='body'>
+    <h1><p>Payment Details</p></h1><hr>
+    <h2><p>Day Scholer Payments</p></h2>
+    <h3><p>+$20: Registration Fee<br>+$10: School Fees Per Month*3<br>-$50: Total</p></h3><hr>
+    <h2><p>Boarding Scool Payments</p></h2>
+    <h3><p>+$20: Registration Fee<br>+$10: School Fees Per Month*3<br>+$300: Boarding Fees<br>-$350: Total</p></h3>
+    <p><a class='link' href='{% url 'makepayment'%}'><input type=submit class='viewbtn'name='done'value='done'></a></p>
+  
+</div>
+{%endblock%}

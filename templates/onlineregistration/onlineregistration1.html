@@ -1,0 +1,30 @@
+{% extends 'onlineregistration/base.html' %}
+{% load static %}   <link rel='stylesheet'href={% static 'css/onlineregistration.css'%}>
+{% block body_block %}
+<div class='pagetitle'>
+    <h1>Online Registration</h1></div>
+<div class='body'>
+    <h1><p>Welcome To Aaron Boarding School Online Registration</p></h1>
+    <h2><p>Only three steps registration process.</p> <br><br>1) Easy Registraion.
+         <form  action={% url 'easyregistration'%} method='POST'enctype='multipart/form-data' method='post'>
+        {% csrf_token %}        <input type='hidden' name='easyregistration'value='1'>
+
+       <br><input type='submit'class='registerbtn'value='Easy Registration'><br> 
+        </form>
+        2) Make Payment<br><br>
+         <form  action={% url 'makepayment'%} method='POST'enctype='multipart/form-data' method='post'>
+        {% csrf_token %}  
+        <input type='submit'class='registerbtn'value='Make Payment'>
+        </form>
+             <br> 
+        3) Admissions<br><br><a href='{%url 'admissions'%}'><input type='submit'class='registerbtn'value='Admissions'></a><br> <br>
+        </h2>
+     <h1><p>Option 1: Easy Registration.</p></h1>
+    <h2><p>Register for a vacancy at Aaron Boarding School Through Our Easy Apply Platform . <br><br><a href='{% url 'easyregistration'%}'><input type='submit'class='registerbtn'value='Easy Registration'></a><br> <br>
+    <h1><p>Option 2: Online Payments.</p></h1>
+    <h2><p>Get payment details and upload proof of payments through our online payments platform.<br><br><a href='{% url 'makepayment'%}'><input type='submit'class='registerbtn'value='Make Payments'></a><br> <br> </p></h2>
+    <h1><p>Option 3: Admissions.</p></h1>
+        <h2><p>Verify your admission into Aaron boarding school and get updates.<br><br><a href='{%url 'admissions'%}'><input type='submit'class='registerbtn'value='Admissions'></a><br> <br></p></h2>
+    
+</div>
+{%endblock%}

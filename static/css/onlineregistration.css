@@ -1,0 +1,96 @@
+
+.link1{
+    color:red;
+    background-color: white;
+    text-decoration: none;
+}
+.imagemain{
+    display:flex;
+
+}
+.imagediv{
+    flex-grow: 1;
+    width:200px:
+}
+.img1{
+    flex-grow: 1;
+    width:375px;
+ 
+    
+}
+.link{
+    color:red;
+    background-color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+.message{
+    color:red;
+}
+.radio{
+    height:30px;
+    width: 60px;
+    padding:30px;
+}
+.input{
+    height:50px;
+    width: 300px;
+    font:400px;
+    
+    
+}
+hr{
+    color:red;
+    background-color: red;
+    height: 10px;
+}
+.table{
+    background-color: red;
+    padding:20px;
+    text-decoration: none;
+}
+
+.td6{
+    background-color: white;
+    
+    
+}
+.viewbtn{
+    background-color: blue;
+    color: white;
+    width:200px;
+    height: 80px;
+    font-size: 20px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+.registerbtn{
+    background-color: red;
+    color: white;
+    width:200px;
+    height: 80px;
+    font-size: 20px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+.head{
+    background-color: red;
+}
+.body{
+    background-color: white;
+    padding: 30px;
+}
+.pagetitle{
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    background-color: white;
+    text-align: center;
+    color:red;
+}
+p{
+    padding:30px;
+}

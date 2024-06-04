@@ -1,0 +1,20 @@
+{% extends 'onlineregistration/base.html' %}
+{% load static %}   <link rel='stylesheet'href={% static 'css/onlineregistration.css'%}>
+{% block body_block %}
+<div class='pagetitle'>
+    <h1>Online Registration</h1></div>
+<div class='body'>
+    <h1><p>View Registration</p></h1><hr>
+    <h2><p>Course : {{registration.course}}</p></h2>
+    <h2><p>Parent Name : {{registration.parentname}}</p></h2>
+    <h2><p>Parent Surname : {{registration.parentsurname}}</p></h2>
+    <h2><p>Parent Email : {{registration.parentemail}}</p></h2>
+    <h2><p>Parent Phone Number : {{registration.parentphonenumber}}</p></h2>
+    <h2><p>Student Name : {{registration.studentname}}</p></h2>
+    <h2><p>Student Surname : {{registration.studentsurname}}</p></h2>
+    <h2><p>Student Sex : {{registration.studentsex}}</p></h2>
+    <h2><p>Student Form : {{registration.form}}</p></h2>
+    
+  <p> <a class='link' href='{% url 'easyregistration'%}'><input type=submit class='viewbtn'name='done'value='done'></a></p>
+</div>
+{%endblock%}

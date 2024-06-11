@@ -10,11 +10,18 @@
 }
 .imagediv{
     flex-grow: 1;
-    width:200px:
+    width:200px;
+    border-style: dotted;
+    border: 10px;
+    border-color: red;
+    
 }
 .img1{
     flex-grow: 1;
     width:375px;
+    border-style: dotted;
+    border: 10px;
+    border-color: red;
  
     
 }

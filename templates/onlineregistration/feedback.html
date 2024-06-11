@@ -2,4 +2,22 @@
 {% load static %}   <link rel='stylesheet'href={% static 'css/onlineregistration.css'%}>
 {% block body_block %}
 <div class='pagetitle'><h1>Feedback</h1></div>
+<div class='body'>
+    <h1><p>Aaron Boarding School Website</p></h1>
+    {%if submit%}
+    <div class='link'><h2><p>Thank You For Your Valued Feedback.</p></h2></div>
+    {%endif%}
+    <h3><p>How Do You Rate Your Experience On Our Website ?</p></h3>
+      <form  action={% url 'feedback'%} method='POST'enctype='multipart/form-data' method='post'>
+              {% csrf_token %}
+    <h2><input type=radio class='radio'name='website' value='1'>One Star (No Bad)<br>
+        <input type=radio class='radio'name='website' value='2'>Two Star (Average)<br>
+        <input type=radio class='radio'name='website' value='3'>Three Star (Good)<br>
+        <input type=radio class='radio'name='website' value='4'>Four Star (Very Good)<br>
+        <input type=radio class='radio'name='website' value='5'>Five Star (Excellent)<br>
+        <p>Comment:<br><br><input type='text'class='input'name='comment'placeholder='Comment Here'> ( Optional )</p>
+        <p><input class='registerbtn'type=submit name=feedback value='Submit'</p>
+          </h2></form>
+</div>
+
 {%endblock%}

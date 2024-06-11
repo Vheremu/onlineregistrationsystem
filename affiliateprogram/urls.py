@@ -22,5 +22,6 @@ urlpatterns = [
     path('confirmgetadd',views.confirmgetadd,name='confirmgetadd'),
     path('myadds',views.myadds,name='myadds'),
     path('account',views.account,name='account'),
+    path('generateinvitationletter',views.generateinvitationletter,name='generateinvitationletter'),
     
 ]

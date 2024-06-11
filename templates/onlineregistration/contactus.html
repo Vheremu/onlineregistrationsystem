@@ -2,4 +2,18 @@
 {% load static %}   <link rel='stylesheet'href={% static 'css/onlineregistration.css'%}>
 {% block body_block %}
 <div class='pagetitle'><h1>Contact Us</h1></div>
+<div class='body'>
+    {%if contact%}
+    <div class='link'>
+    <h2><p>Helo {{contact.contactname}}, Thank You For Contacting Us.</p></h2></div>
+    {%endif%}
+     <form  action={% url 'contactus'%} method='POST'enctype='multipart/form-data' method='post'>
+              {% csrf_token %}
+    <h2><p>Enter Your Full Name:<br><br><input class='input'type='text'name='fullname'placeholder='Name Here'></p></h2>
+     <h2><p>Name of Your Company/Organization:<br><br><input class='input'type='text'name='companyname'placeholder='Organization Name Here'></p></h2>
+     <h2><p># of Employees in Your Company/Organization:<br><br><input class='input'type='text'name='numemployees'placeholder='Number of Emplyees Here'></p></h2>
+    <h2><p>Reoson For Contacting Us:<br><br><input class='input'type='text'name='business'placeholder='Business Here'></p>
+    </h2><p><input class='registerbtn'type='submit'name='submit'value='submit'></p><hr>
+    </form>
+</div>
 {%endblock%}

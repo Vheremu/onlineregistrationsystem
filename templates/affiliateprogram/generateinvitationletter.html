@@ -1,0 +1,20 @@
+{% extends 'affiliateprogram/base.html' %}
+{% load static %}   <link rel='stylesheet'href={% static 'css/onlineregistration.css'%}>
+{% block body_block %}
+<div class='pagetitle'>
+    <h1>Affiliate Program</h1></div>
+<div class='body'>
+    <h1><p>Generate Invitation Letter</p></h1><hr>
+    {%if invitation%}
+    <h2><p>Succesfully Generated Invitation Letter <br><br><img class='img1' src='{{invitation.invitationimage.url}}'></p></h2>
+    {%endif%}
+   <h2><p>Invitation Details</p></h2>
+    <form  action={% url 'ap_app:generateinvitationletter'%} method='POST'enctype='multipart/form-data' method='post'>
+              {% csrf_token %}
+    <h3><p>Enter Inviter First Name:<br><br><input type='text'name='inviterfirstname'placeholder='First Name Here'></p></h3>
+        <h3><p>Enter Inviter Surname:<br><br><input type='text'name='invitersurname'placeholder='First Name Here'></p></h3>
+    <h3><p>Enter Invitee First Name:<br><br><input type='text'name='firstname'placeholder='First Name Here'></p></h3>
+     <h3><p>Enter Invitee Surname:<br><br><input type='text'name='surname'placeholder='Last Name Here'></p></h3>
+        <p><input name='generate'type='submit'class='registerbtn'value='Generate'></p></form><hr>
+   </div>
+{%endblock%}

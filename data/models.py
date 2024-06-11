@@ -30,3 +30,18 @@ class Admission(models.Model):
     registration = models.ForeignKey(Registration,on_delete=models.CASCADE,blank=True)
     def __str__(self):
         return self.admissionuser.user.username
+class Feedback(models.Model):
+    feedbackid = models.IntegerField(blank=False,unique=True,primary_key=True)
+    feedbackuser = models.ForeignKey(UserProfileInfo,on_delete=models.CASCADE,blank=True)
+    feedbackrating = models.CharField(blank=False,max_length=100,unique=False)
+    feedbackcomment= models.CharField(blank=False,max_length=100,unique=False)
+    def __str__(self):
+        return self.feedbackuser.user.username
+class Contact(models.Model):
+    contactid = models.IntegerField(blank=False,unique=True,primary_key=True)
+    contactname = models.CharField(blank=False,max_length=100,unique=False)
+    contactcompany = models.CharField(blank=False,max_length=100,unique=False)
+    contactcompanyemployees = models.CharField(blank=False,max_length=100,unique=False)
+    contactbusiness = models.CharField(blank=False,max_length=100,unique=False)
+    def __str__(self):
+        return self.contactname

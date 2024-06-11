@@ -5,5 +5,11 @@
     <h1>Affiliate Program</h1></div>
 <div class='body'>
     <h1><p>My Adds</p></h1><hr>
+     {%for add in adds%}<div class='imagemain'>
+   <h2> <div class='imagediv'><p class='imagediv'>{{user}}'s Add<br><img class='img1' src='{{add.addimage.url}}'></p>
+       
+       
+       <hr></div></h2></div>
+    {%endfor%}
    </div>
 {%endblock%}

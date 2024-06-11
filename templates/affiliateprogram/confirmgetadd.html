@@ -6,10 +6,10 @@
 <div class='body'>
     <h1><p>Confirm Get Add</p></h1><hr>
     <h2><p>Are you sure you want to get this Add for marketing?</p><p><img class='img1'src='http://127.0.0.1:8000/static/adds/promo.png'>
-        <form  action={% url 'ap_app:adds'%} method='POST'enctype='multipart/form-data' method='post'>
+        <form  action={% url 'ap_app:myadds'%} method='POST'enctype='multipart/form-data' method='post'>
               {% csrf_token %}
    <input type='hidden'name='addid' value='{{add.addid}}'>
-    <input type='submit'class='registerbtn'value='Get Add'>
+    <input type='submit'class='registerbtn'name='confirm'value='Get Add'>
         </form><a href='{%url 'ap_app:adds'%}'><input type='submit'class='registerbtn'value='Cancel'></a>
         
         </p></h2>

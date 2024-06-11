@@ -5,5 +5,26 @@
     <h1>Affiliate Program</h1></div>
 <div class='body'>
     <h1><p>Account</p></h1><hr>
+    <h2><p>Student Registrations</p></h2>
+    <h3><p>New Students Registered : 0<br>Total Students Registered : 0<br>Balance : $0<br>Total Withdrawals : $0</p></h3>
+    <hr><h2><p>My Network</p></h2>
+    <h3><p>New Students Registered : 0<br>Total Students Registered : 0<br>Total Network Members: 0<br>Balance : $0<br>Total Withdrawals : $0</p></h3>
+    <h3><p></p></h3>
+    <hr><h2><p>Invitations</p></h2>
+    {%if invitation%}
+    <hr><h3><p><b>Invitee    :    Invitation Status</b></p></h3>
+    {%for inv in invitation%}
+    
+    <h3><p>{{inv.invitationinvitee}} : {{inv.invitationstatus}}</p></h3>
+    {%endfor%}
+    {%else%}
+    <hr><h3><p>No Invitations Active</p></h3>
+    {%endif%}
+    <form  action={% url 'ap_app:generateinvitationletter'%} method='POST'enctype='multipart/form-data' method='post'>
+              {% csrf_token %}
+   
+    <input name='invitation'type='submit'class='registerbtn'value='Generate Invitation Letter'>
+        </form>
+       
    </div>
 {%endblock%}

@@ -1,16 +1,37 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-from data.models import Registration,Pop
+from data.models import Registration,Pop,Feedback,Contact
 from accounts.models import UserProfileInfo
+from affiliateprogram.models import Promocode
 import time,datetime
 def index(request):
     my_dict = {}
     return render(request,'onlineregistration/index.html',context=my_dict)
+@login_required
 def feedback(request):
+    
+    user=request.user
+    user= UserProfileInfo.objects.get(user=user)
+    website=request.POST.get('website')
+    comment=request.POST.get('comment')
+    if website:
+        
+        feedback=Feedback.objects.create(feedbackuser=user,feedbackrating=website,feedbackcomment=comment)
+        my_dict = {'submit':'submit'}
+        return render(request,'onlineregistration/feedback.html',context=my_dict)
     my_dict = {}
     return render(request,'onlineregistration/feedback.html',context=my_dict)
 def contactus(request):
+    print(request.POST)
+    fullname=request.POST.get('fullname')
+    companyname=request.POST.get('companyname')
+    numemployees=request.POST.get('numemployees')
+    business=request.POST.get('business')
+    if fullname:
+        contact=Contact.objects.create(contactname=fullname,contactcompany=companyname,contactcompanyemployees=numemployees,contactbusiness=business)
+        my_dict = {'contact':contact}
+        return render(request,'onlineregistration/contactus.html',context=my_dict)
     my_dict = {}
     return render(request,'onlineregistration/contactus.html',context=my_dict)
 @login_required
@@ -48,6 +69,26 @@ def uploadproofofpayment(request):
     return render(request,'onlineregistration/uploadproofofpayment.html',context=my_dict)
 @login_required
 def paymentdetails(request):
+    print(request.POST)
+    promocode=request.POST.get('promocode')
+    if promocode:
+        promo=request.POST.get('promo')
+        try:
+            promocode=Promocode.objects.get(promocode=promocode)
+            print('valid promocode')
+            if promo=='dayscholar':
+                print('day scholar')
+                dayscholar=1
+                my_dict = {'dayscholar':dayscholar,'promocode':promocode}
+                return render(request,'onlineregistration/paymentdetails.html',context=my_dict)
+            else:
+                print('boarder')
+                boarder=1
+                my_dict = {'boarder':boarder,'promocode':promocode}
+                return render(request,'onlineregistration/paymentdetails.html',context=my_dict)
+        except:
+            print('invalid promocode')
+        
     my_dict = {}
     return render(request,'onlineregistration/paymentdetails.html',context=my_dict)
 @login_required
